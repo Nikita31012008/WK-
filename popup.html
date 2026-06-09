@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK Styles</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>VK Styles</h1>
+            <p class="version">v1.0.0</p>
+        </div>
+
+        <div class="settings">
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span>Тёмная тема</span>
+                    <input type="checkbox" id="darkTheme" class="toggle">
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span>Лёгкая тема</span>
+                    <input type="checkbox" id="lightTheme" class="toggle">
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span>Компактный режим</span>
+                    <input type="checkbox" id="compactMode" class="toggle">
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span>Скрыть рекомендации</span>
+                    <input type="checkbox" id="hideRecommendations" class="toggle">
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span>Скрыть объявления</span>
+                    <input type="checkbox" id="hideAds" class="toggle">
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span>Скрыть истории</span>
+                    <input type="checkbox" id="hideStories" class="toggle">
+                </label>
+            </div>
+        </div>
+
+        <div class="color-settings">
+            <h3>Цветовая схема</h3>
+            <div class="color-grid">
+                <button class="color-btn" data-color="default" title="По умолчанию">
+                    <span class="color-preview" style="background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);"></span>
+                </button>
+                <button class="color-btn" data-color="purple" title="Фиолетовая">
+                    <span class="color-preview" style="background: linear-gradient(135deg, #9b59b6 0%, #7d3c98 100%);"></span>
+                </button>
+                <button class="color-btn" data-color="green" title="Зелёная">
+                    <span class="color-preview" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);"></span>
+                </button>
+                <button class="color-btn" data-color="red" title="Красная">
+                    <span class="color-preview" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);"></span>
+                </button>
+                <button class="color-btn" data-color="orange" title="Оранжевая">
+                    <span class="color-preview" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);"></span>
+                </button>
+                <button class="color-btn" data-color="pink" title="Розовая">
+                    <span class="color-preview" style="background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button id="resetBtn" class="btn btn-secondary">Сброс</button>
+            <a href="options.html" class="btn btn-primary">Все настройки</a>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
