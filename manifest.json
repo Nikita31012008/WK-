@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "VK Styles",
+  "version": "1.0.0",
+  "description": "Бесплатное расширение для кастомизации ВКонтакте. Тёмная тема, лёгкая тема, компактный режим и многое другое!",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://vk.com/*",
+    "*://www.vk.com/*",
+    "*://m.vk.com/*"
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VK Styles"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://vk.com/*",
+        "*://www.vk.com/*",
+        "*://m.vk.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles/main.css"
+      ]
+    }
+  ]
+}
