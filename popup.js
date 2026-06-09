@@ -1,4 +1,3 @@
-// Default settings
 const defaultSettings = {
     darkTheme: false,
     lightTheme: false,
@@ -9,17 +8,24 @@ const defaultSettings = {
     colorScheme: 'default'
 };
 
-// Load settings on popup open
 document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.sync.get(defaultSettings, (settings) => {
-        document.getElementById('darkTheme').checked = settings.darkTheme;
-        document.getElementById('lightTheme').checked = settings.lightTheme;
+        // Set theme
+        if (settings.darkTheme) {
+            document.querySelector('input[name="theme"][value="dark"]').checked = true;
+        } else if (settings.lightTheme) {
+            document.querySelector('input[name="theme"][value="light"]').checked = true;
+        } else {
+            document.querySelector('input[name="theme"][value="default"]').checked = true;
+        }
+
+        // Set toggles
         document.getElementById('compactMode').checked = settings.compactMode;
         document.getElementById('hideRecommendations').checked = settings.hideRecommendations;
         document.getElementById('hideAds').checked = settings.hideAds;
         document.getElementById('hideStories').checked = settings.hideStories;
 
-        // Highlight active color button
+        // Set color scheme
         document.querySelectorAll('.color-btn').forEach(btn => {
             if (btn.dataset.color === settings.colorScheme) {
                 btn.classList.add('active');
@@ -27,49 +33,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Theme change listener
+    document.querySelectorAll('input[name="theme"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            const settings = {\n                darkTheme: e.target.value === 'dark',
+                lightTheme: e.target.value === 'light',
+                compactMode: document.getElementById('compactMode').checked,
+                hideRecommendations: document.getElementById('hideRecommendations').checked,
+                hideAds: document.getElementById('hideAds').checked,
+                hideStories: document.getElementById('hideStories').checked,
+                colorScheme: document.querySelector('.color-btn.active').dataset.color
+            };
+            saveSetting(settings);
+        });
+    });
+
     // Toggle listeners
-    document.getElementById('darkTheme').addEventListener('change', (e) => {
-        if (e.target.checked) {
-            document.getElementById('lightTheme').checked = false;
-        }
-        saveSetting('darkTheme', e.target.checked);
+    document.getElementById('compactMode').addEventListener('change', () => {
+        updateAndSave();
     });
 
-    document.getElementById('lightTheme').addEventListener('change', (e) => {
-        if (e.target.checked) {
-            document.getElementById('darkTheme').checked = false;
-        }
-        saveSetting('lightTheme', e.target.checked);
+    document.getElementById('hideRecommendations').addEventListener('change', () => {
+        updateAndSave();
     });
 
-    document.getElementById('compactMode').addEventListener('change', (e) => {
-        saveSetting('compactMode', e.target.checked);
+    document.getElementById('hideAds').addEventListener('change', () => {
+        updateAndSave();
     });
 
-    document.getElementById('hideRecommendations').addEventListener('change', (e) => {
-        saveSetting('hideRecommendations', e.target.checked);
+    document.getElementById('hideStories').addEventListener('change', () => {
+        updateAndSave();
     });
 
-    document.getElementById('hideAds').addEventListener('change', (e) => {
-        saveSetting('hideAds', e.target.checked);
-    });
-
-    document.getElementById('hideStories').addEventListener('change', (e) => {
-        saveSetting('hideStories', e.target.checked);
-    });
-
-    // Color scheme selector
+    // Color scheme listeners
     document.querySelectorAll('.color-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            saveSetting('colorScheme', btn.dataset.color);
+            updateAndSave();
         });
     });
 
     // Reset button
     document.getElementById('resetBtn').addEventListener('click', () => {
-        if (confirm('Вы уверены? Все настройки будут сброшены.')) {
+        if (confirm('Сбросить все настройки?')) {
             chrome.storage.sync.clear(() => {
                 chrome.storage.sync.set(defaultSettings, () => {
                     location.reload();
@@ -79,17 +86,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function saveSetting(key, value) {
-    chrome.storage.sync.set({ [key]: value }, () => {
-        // Notify content scripts about change
+function updateAndSave() {
+    const settings = {
+        darkTheme: document.querySelector('input[name="theme"][value="dark"]').checked,
+        lightTheme: document.querySelector('input[name="theme"][value="light"]').checked,
+        compactMode: document.getElementById('compactMode').checked,
+        hideRecommendations: document.getElementById('hideRecommendations').checked,
+        hideAds: document.getElementById('hideAds').checked,
+        hideStories: document.getElementById('hideStories').checked,
+        colorScheme: document.querySelector('.color-btn.active').dataset.color
+    };
+    saveSetting(settings);
+}
+
+function saveSetting(settings) {
+    chrome.storage.sync.set(settings, () => {
+        // Notify content scripts
         chrome.tabs.query({ url: ['*://vk.com/*', '*://www.vk.com/*', '*://m.vk.com/*'] }, (tabs) => {
             tabs.forEach(tab => {
                 chrome.tabs.sendMessage(tab.id, {
                     action: 'settingsUpdated',
-                    settings: { [key]: value }
-                }).catch(() => {
-                    // Tab might not be ready yet
-                });
+                    settings: settings
+                }).catch(() => {});
             });
         });
     });
