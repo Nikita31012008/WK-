@@ -9,81 +9,67 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>VK Styles</h1>
-            <p class="version">v1.0.0</p>
+            <h1>🎨 VK Styles</h1>
         </div>
 
         <div class="settings">
-            <div class="setting-group">
-                <label class="setting-label">
-                    <span>Тёмная тема</span>
-                    <input type="checkbox" id="darkTheme" class="toggle">
+            <!-- Theme Selection -->
+            <div class="theme-selector">
+                <label class="radio-option">
+                    <input type="radio" name="theme" value="default" checked>
+                    <span>По умолчанию</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="theme" value="dark">
+                    <span>🌙 Тёмная</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="theme" value="light">
+                    <span>☀️ Лёгкая</span>
                 </label>
             </div>
 
-            <div class="setting-group">
-                <label class="setting-label">
-                    <span>Лёгкая тема</span>
-                    <input type="checkbox" id="lightTheme" class="toggle">
-                </label>
+            <!-- Color Scheme -->
+            <div class="color-quick-select">
+                <p class="label">Цвет:</p>
+                <div class="color-buttons">
+                    <button class="color-btn active" data-color="default" style="background: #4a90e2;" title="Синяя"></button>
+                    <button class="color-btn" data-color="purple" style="background: #9b59b6;" title="Фиолетовая"></button>
+                    <button class="color-btn" data-color="green" style="background: #27ae60;" title="Зелёная"></button>
+                    <button class="color-btn" data-color="red" style="background: #e74c3c;" title="Красная"></button>
+                    <button class="color-btn" data-color="orange" style="background: #f39c12;" title="Оранжевая"></button>
+                    <button class="color-btn" data-color="pink" style="background: #e91e63;" title="Розовая"></button>
+                </div>
             </div>
 
-            <div class="setting-group">
-                <label class="setting-label">
-                    <span>Компактный режим</span>
-                    <input type="checkbox" id="compactMode" class="toggle">
+            <!-- Toggle Options -->
+            <div class="toggle-options">
+                <label class="toggle-item">
+                    <span>📦 Компактный</span>
+                    <input type="checkbox" id="compactMode">
+                    <span class="toggle-slider"></span>
                 </label>
-            </div>
-
-            <div class="setting-group">
-                <label class="setting-label">
-                    <span>Скрыть рекомендации</span>
-                    <input type="checkbox" id="hideRecommendations" class="toggle">
+                <label class="toggle-item">
+                    <span>🚫 Без объявлений</span>
+                    <input type="checkbox" id="hideAds">
+                    <span class="toggle-slider"></span>
                 </label>
-            </div>
-
-            <div class="setting-group">
-                <label class="setting-label">
-                    <span>Скрыть объявления</span>
-                    <input type="checkbox" id="hideAds" class="toggle">
+                <label class="toggle-item">
+                    <span>👥 Без рекомендаций</span>
+                    <input type="checkbox" id="hideRecommendations">
+                    <span class="toggle-slider"></span>
                 </label>
-            </div>
-
-            <div class="setting-group">
-                <label class="setting-label">
-                    <span>Скрыть истории</span>
-                    <input type="checkbox" id="hideStories" class="toggle">
+                <label class="toggle-item">
+                    <span>📖 Без историй</span>
+                    <input type="checkbox" id="hideStories">
+                    <span class="toggle-slider"></span>
                 </label>
-            </div>
-        </div>
-
-        <div class="color-settings">
-            <h3>Цветовая схема</h3>
-            <div class="color-grid">
-                <button class="color-btn" data-color="default" title="По умолчанию">
-                    <span class="color-preview" style="background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);"></span>
-                </button>
-                <button class="color-btn" data-color="purple" title="Фиолетовая">
-                    <span class="color-preview" style="background: linear-gradient(135deg, #9b59b6 0%, #7d3c98 100%);"></span>
-                </button>
-                <button class="color-btn" data-color="green" title="Зелёная">
-                    <span class="color-preview" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);"></span>
-                </button>
-                <button class="color-btn" data-color="red" title="Красная">
-                    <span class="color-preview" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);"></span>
-                </button>
-                <button class="color-btn" data-color="orange" title="Оранжевая">
-                    <span class="color-preview" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);"></span>
-                </button>
-                <button class="color-btn" data-color="pink" title="Розовая">
-                    <span class="color-preview" style="background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);"></span>
-                </button>
             </div>
         </div>
 
         <div class="footer">
-            <button id="resetBtn" class="btn btn-secondary">Сброс</button>
-            <a href="options.html" class="btn btn-primary">Все настройки</a>
+            <button id="resetBtn" class="btn btn-small">↻ Сброс</button>
+            <a href="options.html" target="_blank" class="btn btn-primary">⚙️ Все настройки</a>
         </div>
     </div>
 
