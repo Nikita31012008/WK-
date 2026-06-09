@@ -5,72 +5,164 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    width: 350px;
-    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    width: 380px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #222;
 }
 
 .container {
     padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 12px;
+    margin-bottom: 16px;
+    text-align: center;
 }
 
 .header h1 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.version {
-    font-size: 12px;
-    color: #999;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .settings {
-    margin-bottom: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    flex: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.setting-group {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Theme Selector */
+.theme-selector {
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
 }
 
-.setting-label {
+.radio-option {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
     cursor: pointer;
-    padding: 8px 0;
-    user-select: none;
+    transition: all 0.2s;
+    background: #f8f9fa;
 }
 
-.setting-label span {
+.radio-option:hover {
+    border-color: #667eea;
+    background: #f0f2f8;
+}
+
+.radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.radio-option span {
     font-size: 13px;
+    font-weight: 500;
     color: #222;
 }
 
-.toggle {
-    width: 40px;
-    height: 24px;
-    cursor: pointer;
-    appearance: none;
-    background: #e5e5e5;
-    border: none;
-    border-radius: 12px;
-    position: relative;
-    transition: background 0.3s;
+/* Color Quick Select */
+.color-quick-select {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e5e5;
 }
 
-.toggle::before {
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.color-buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.color-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.color-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.color-btn.active {
+    border-color: #222;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #222, 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Toggle Options */
+.toggle-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-item:hover {
+    background: #f0f2f8;
+    border-color: #667eea;
+}
+
+.toggle-item span:first-child {
+    font-size: 13px;
+    font-weight: 500;
+    color: #222;
+}
+
+.toggle-item input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 12px;
+    transition: background 0.3s;
+    margin-left: 8px;
+}
+
+.toggle-slider::before {
     content: '';
     position: absolute;
     width: 20px;
@@ -83,95 +175,71 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.toggle:checked {
-    background: #4a90e2;
+.toggle-item input[type="checkbox"]:checked + .toggle-slider {
+    background: #667eea;
 }
 
-.toggle:checked::before {
-    left: 18px;
+.toggle-item input[type="checkbox"]:checked + .toggle-slider::before {
+    left: 22px;
 }
 
-.color-settings {
-    margin-bottom: 20px;
-    padding: 12px;
-    background: #f5f5f5;
-    border-radius: 8px;
-}
-
-.color-settings h3 {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #222;
-}
-
-.color-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-}
-
-.color-btn {
-    width: 100%;
-    aspect-ratio: 1;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 2px;
-    cursor: pointer;
-    background: white;
-    transition: all 0.2s;
-}
-
-.color-btn:hover {
-    border-color: #999;
-}
-
-.color-btn.active {
-    border-color: #222;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #222;
-}
-
-.color-preview {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-}
-
+/* Footer */
 .footer {
     display: flex;
     gap: 8px;
+    margin-top: 16px;
 }
 
 .btn {
     flex: 1;
-    padding: 10px 16px;
+    padding: 12px 16px;
     border: none;
-    border-radius: 6px;
-    font-size: 12px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
-    text-align: center;
     text-decoration: none;
-    display: inline-block;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .btn-primary {
-    background: #4a90e2;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .btn-primary:hover {
-    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
 }
 
-.btn-secondary {
+.btn-small {
     background: #f0f0f0;
-    color: #222;
-    border: 1px solid #ddd;
+    color: #667eea;
+    border: 2px solid #667eea;
 }
 
-.btn-secondary:hover {
-    background: #e5e5e5;
+.btn-small:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .container {
+        width: 100%;
+    }
+
+    .color-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer {
+        flex-direction: column;
+    }
 }
