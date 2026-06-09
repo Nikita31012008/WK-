@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK Styles - Настройки</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="options-container">
+        <div class="options-header">
+            <h1>🎨 VK Styles - Полные Настройки</h1>
+            <p class="subtitle">Кастомизируй ВКонтакте под себя</p>
+        </div>
+
+        <div class="options-content">
+            <!-- Theme Section -->
+            <section class="option-section">
+                <h2>🌙 Тема Оформления</h2>
+                <div class="option-group">
+                    <div class="option-item">
+                        <input type="radio" id="themeDefault" name="theme" value="default">
+                        <label for="themeDefault">
+                            <span class="option-title">По умолчанию</span>
+                            <span class="option-desc">Оригинальный стиль ВКонтакте</span>
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="themeDark" name="theme" value="dark">
+                        <label for="themeDark">
+                            <span class="option-title">🌙 Тёмная</span>
+                            <span class="option-desc">Комфортна для глаз в тёмное время</span>
+                        </label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="themeLight" name="theme" value="light">
+                        <label for="themeLight">
+                            <span class="option-title">☀️ Лёгкая</span>
+                            <span class="option-desc">Чистый и светлый дизайн</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Color Scheme Section -->
+            <section class="option-section">
+                <h2>🎨 Цветовая Палитра</h2>
+                <div class="color-palette">
+                    <div class="color-item" data-color="default">
+                        <div class="color-box" style="background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);"></div>
+                        <span>Синяя</span>
+                    </div>
+                    <div class="color-item" data-color="purple">
+                        <div class="color-box" style="background: linear-gradient(135deg, #9b59b6 0%, #7d3c98 100%);"></div>
+                        <span>Фиолетовая</span>
+                    </div>
+                    <div class="color-item" data-color="green">
+                        <div class="color-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);"></div>
+                        <span>Зелёная</span>
+                    </div>
+                    <div class="color-item" data-color="red">
+                        <div class="color-box" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);"></div>
+                        <span>Красная</span>
+                    </div>
+                    <div class="color-item" data-color="orange">
+                        <div class="color-box" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);"></div>
+                        <span>Оранжевая</span>
+                    </div>
+                    <div class="color-item" data-color="pink">
+                        <div class="color-box" style="background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);"></div>
+                        <span>Розовая</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Display Options -->
+            <section class="option-section">
+                <h2>⚙️ Параметры Отображения</h2>
+                <div class="toggle-group">
+                    <div class="toggle-item">
+                        <div>
+                            <div class="toggle-title">Компактный режим</div>
+                            <div class="toggle-desc">Уменьшает размер элементов интерфейса</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="compactMode">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-item">
+                        <div>
+                            <div class="toggle-title">Скрыть рекомендации</div>
+                            <div class="toggle-desc">Удаляет рекомендуемых друзей и посты</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="hideRecommendations">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-item">
+                        <div>
+                            <div class="toggle-title">Скрыть объявления</div>
+                            <div class="toggle-desc">Блокирует всю рекламу на сайте</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="hideAds">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-item">
+                        <div>
+                            <div class="toggle-title">Скрыть истории</div>
+                            <div class="toggle-desc">Удаляет ленту историй со страницы</div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="hideStories">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="option-section about-section">
+                <h2>ℹ️ О расширении</h2>
+                <div class="about-content">
+                    <p><strong>VK Styles v1.0.0</strong></p>
+                    <p>Бесплатное расширение для кастомизации ВКонтакте</p>
+                    <ul>
+                        <li>✅ Полностью бесплатное</li>
+                        <li>✅ Без рекламы и аналитики</li>
+                        <li>✅ Открытый исходный код</li>
+                        <li>✅ Работает только на VK</li>
+                    </ul>
+                    <p class="footer-text">Сделано с ❤️ для ВКонтакте</p>
+                    <a href="https://github.com/Nikita31012008/WK-" target="_blank" class="github-link">🔗 GitHub репозиторий</a>
+                </div>
+            </section>
+        </div>
+
+        <div class="options-footer">
+            <button id="saveBtn" class="btn btn-primary">✓ Сохранить</button>
+            <button id="resetBtn" class="btn btn-secondary">↺ Сбросить</button>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
