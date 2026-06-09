@@ -1,0 +1,164 @@
+/* VK Styles - Main CSS */
+
+:root {
+    --vk-primary: #4a90e2;
+    --vk-primary-dark: #357abd;
+    --vk-primary-light: #e5f0ff;
+}
+
+/* DARK THEME */
+html.vk-styles-dark {
+    --vk-bg: #1a1a1a;
+    --vk-bg-secondary: #242424;
+    --vk-bg-tertiary: #2e2e2e;
+    --vk-text: #ffffff;
+    --vk-text-secondary: #b0b0b0;
+    --vk-border: #3a3a3a;
+}
+
+html.vk-styles-dark body,
+html.vk-styles-dark .content,
+html.vk-styles-dark .page_wrap {
+    background-color: var(--vk-bg) !important;
+    color: var(--vk-text) !important;
+}
+
+html.vk-styles-dark .ui_box,
+html.vk-styles-dark .box,
+html.vk-styles-dark .narrow_column,
+html.vk-styles-dark .feed_row {
+    background-color: var(--vk-bg-secondary) !important;
+    border-color: var(--vk-border) !important;
+    color: var(--vk-text) !important;
+}
+
+html.vk-styles-dark a {
+    color: var(--vk-primary) !important;
+}
+
+html.vk-styles-dark a:hover {
+    color: var(--vk-primary-light) !important;
+}
+
+html.vk-styles-dark input,
+html.vk-styles-dark textarea,
+html.vk-styles-dark select {
+    background-color: var(--vk-bg-tertiary) !important;
+    color: var(--vk-text) !important;
+    border-color: var(--vk-border) !important;
+}
+
+html.vk-styles-dark .reply_text,
+html.vk-styles-dark .wall_text,
+html.vk-styles-dark .text {
+    color: var(--vk-text-secondary) !important;
+}
+
+html.vk-styles-dark button,
+html.vk-styles-dark .button {
+    background-color: var(--vk-bg-tertiary) !important;
+    color: var(--vk-text) !important;
+    border-color: var(--vk-border) !important;
+}
+
+html.vk-styles-dark .button_primary {
+    background-color: var(--vk-primary) !important;
+    color: white !important;
+}
+
+/* LIGHT THEME */
+html.vk-styles-light {
+    --vk-bg: #f5f5f5;
+    --vk-bg-secondary: #ffffff;
+    --vk-bg-tertiary: #e8e8e8;
+    --vk-text: #000000;
+    --vk-text-secondary: #555555;
+    --vk-border: #cccccc;
+}
+
+html.vk-styles-light body,
+html.vk-styles-light .content,
+html.vk-styles-light .page_wrap {
+    background-color: var(--vk-bg) !important;
+    color: var(--vk-text) !important;
+}
+
+html.vk-styles-light .ui_box,
+html.vk-styles-light .box,
+html.vk-styles-light .narrow_column,
+html.vk-styles-light .feed_row {
+    background-color: var(--vk-bg-secondary) !important;
+    border-color: var(--vk-border) !important;
+    color: var(--vk-text) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+html.vk-styles-light a {
+    color: var(--vk-primary) !important;
+}
+
+html.vk-styles-light input,
+html.vk-styles-light textarea,
+html.vk-styles-light select {
+    background-color: var(--vk-bg-secondary) !important;
+    color: var(--vk-text) !important;
+    border-color: var(--vk-border) !important;
+}
+
+/* COMPACT MODE */
+html.vk-styles-compact {
+    --font-size-reduction: 0.9;
+}
+
+html.vk-styles-compact * {
+    font-size: calc(1em * var(--font-size-reduction)) !important;
+    padding: calc(var(--padding, 8px) * 0.8) !important;
+}
+
+html.vk-styles-compact .feed_row,
+html.vk-styles-compact .wall_post {
+    margin-bottom: 8px !important;
+}
+
+/* HIDE RECOMMENDATIONS */
+html.vk-styles-hide-recommendations .feed_recommends,
+html.vk-styles-hide-recommendations .ads_recomenda_wrap,
+html.vk-styles-hide-recommendations [data-testid*="recommend"],
+html.vk-styles-hide-recommendations .recommendations {
+    display: none !important;
+}
+
+/* HIDE ADS */
+html.vk-styles-hide-ads .ads,
+html.vk-styles-hide-ads .ads_wrap,
+html.vk-styles-hide-ads [id*="ad"],
+html.vk-styles-hide-ads [class*="ad"],
+html.vk-styles-hide-ads .advertisement,
+html.vk-styles-hide-ads .paid_banner {
+    display: none !important;
+}
+
+/* HIDE STORIES */
+html.vk-styles-hide-stories .stories,
+html.vk-styles-hide-stories .feed_stories,
+html.vk-styles-hide-stories [data-testid*="story"],
+html.vk-styles-hide-stories .story {
+    display: none !important;
+}
+
+/* CUSTOM COLOR SCHEME APPLICATION */
+html.vk-styles-dark .button_primary,
+html.vk-styles-light .button_primary {
+    background-color: var(--vk-primary) !important;
+    border-color: var(--vk-primary-dark) !important;
+}
+
+html.vk-styles-dark .button_primary:hover,
+html.vk-styles-light .button_primary:hover {
+    background-color: var(--vk-primary-dark) !important;
+}
+
+html.vk-styles-dark .like,
+html.vk-styles-light .like {
+    color: var(--vk-primary) !important;
+}
